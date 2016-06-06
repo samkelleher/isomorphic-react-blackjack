@@ -2,9 +2,11 @@
   "name": "Blackjack",
   "version": "1.0.0",
   "description": "Simple Blackjack.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "DEBUG=* NODE_ENV=production node src/index",
+    "dev": "DEBUG=App:*,Dispatchr:*,-Fluxible,navigateAction NODE_ENV=development nodemon src/index"
   },
   "keywords": [],
   "private": true,
@@ -21,11 +23,19 @@
   "devDependencies": {
     "babel-eslint": "^6.0.4",
     "eslint": "^2.11.1",
-    "eslint-plugin-react": "^5.1.1"
+    "eslint-plugin-react": "^5.1.1",
+    "nodemon": "^1.9.2"
   },
   "dependencies": {
+    "debug": "^2.2.0",
+    "express": "^4.13.4",
+    "fluxible": "^1.1.0",
+    "fluxible-addons-react": "^0.2.8",
+    "fluxible-plugin-fetchr": "^0.3.9",
+    "fluxible-router": "^0.4.14",
     "keymirror": "^0.1.1",
     "lodash.shuffle": "^4.0.0",
-    "react": "^15.1.0"
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0"
   }
 }
