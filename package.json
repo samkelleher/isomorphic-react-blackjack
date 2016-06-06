@@ -1,0 +1,16 @@
+{
+  "name": "Blackjack",
+  "version": "1.0.0",
+  "description": "Simple Blackjack.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Sam Kelleher",
+    "email": "sam@samkelleher.com",
+    "url": "https://samkelleher.com/"
+  },
+  "license": "GPL-3.0"
+}
