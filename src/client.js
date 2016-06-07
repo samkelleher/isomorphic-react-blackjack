@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Application from './Application';
 import Debug from 'debug';
+import './sass/index.scss';
 
 const dehydratedState = window.__INITIAL_STATE__; // Sent from the server
 const debug = Debug('App:Client');
