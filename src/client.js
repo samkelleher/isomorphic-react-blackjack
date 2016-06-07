@@ -9,7 +9,7 @@ const debug = Debug('App:Client');
 
 Debug.enable('*,-sockjs-client:*');
 
-debug('Rehydrating state...');
+debug('Rehydrating state...', dehydratedState);
 
 Application.rehydrate(dehydratedState, (err, context) => {
     if (err) {

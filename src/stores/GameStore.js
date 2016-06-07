@@ -20,12 +20,45 @@ export default class extends BaseStore {
 
     playerHit() {
         this.state.player.takeCard();
+        if (this.state.player.hasLost()) {
+            this.calculateWinner();
+        }
         this.emitChange();
     }
 
     playerStick() {
         this.state.dealer.dealUntilHighest();
+        this.calculateWinner();
         this.emitChange();
+    }
+
+    calculateWinner() {
+
+        const outcome = {
+            dealerScore: this.state.dealer.getScore(),
+            playerScore: this.state.player.getScore(),
+            settled: false
+        };
+
+        if (outcome.playerScore > 21 || outcome.dealerScore === 21) {
+            outcome.settled = true;
+            outcome.winner = 'Dealer';
+            outcome.dealerWins = true;
+        } else if (outcome.dealerScore > 21 || outcome.playerScore === 21 || outcome.playerScore > outcome.dealerScore) {
+            outcome.settled = true;
+            outcome.winner = 'Player';
+            outcome.playerWins = true;
+        } else if (outcome.dealerScore > outcome.playerScore) {
+            outcome.settled = true;
+            outcome.winner = 'Dealer';
+            outcome.dealerWins = true;
+        } else if (outcome.dealerScore === outcome.playerScore) {
+            outcome.settled = true;
+            outcome.winner = 'Draw';
+
+        }
+
+        this.state.outcome = outcome;
     }
 
     constructor(dispatcher) {
@@ -35,6 +68,8 @@ export default class extends BaseStore {
 
     applyNewGame(game) {
         this.state = game;
+        // TODO: Put the outcome generation in one place.
+        this.state.outcome = {settled: false};
         this.emitChange();
     }
 
@@ -69,7 +104,10 @@ export default class extends BaseStore {
         this.state = {
             deck,
             player,
-            dealer
+            dealer,
+            outcome: {settled: false}
         };
+
+        //this.calculateWinner();
     }
 }

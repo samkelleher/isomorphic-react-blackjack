@@ -8,7 +8,7 @@ export default class CardList extends React.Component {
         return (
             <ul>
                 {cards.map((card) => {
-                    return <Card key={card.toID()} card={card}/>;
+                    return <li key={card.toID()}><Card card={card}/></li>;
                 })}
             </ul>
         );

@@ -4,6 +4,7 @@ import Card from './Card';
  * A hand is the number of single cards held from a deck by an individual player.
  */
 export default class Hand {
+    
     constructor(deck) {
         this.deck = deck;
         this.cards = [];
@@ -18,6 +19,10 @@ export default class Hand {
         return this;
     }
 
+    /**
+     * Get the current numeric score for this hand.
+     * @returns {number}
+     */
     getScore() {
         let numberOfAces = 0;
         let score = 0;
@@ -39,6 +44,14 @@ export default class Hand {
     }
 
     /**
+     * Shortcut to indicate if this hand has lost by default.
+     * @returns {boolean}
+     */
+    hasLost() {
+        return this.getScore() > 21;
+    }
+
+    /**
      * This is used by the Dealer, when the Player 'sticks'. The dealer will take cards until they're broke.
      * @returns {Hand}
      */
@@ -48,13 +61,22 @@ export default class Hand {
         }
         return this;
     }
-    
+
+    /**
+     * Serialize this hand to JSON.
+     * @returns {{cards: Array}}
+     */
     toJSON() {
         return {
             cards: this.cards.map((card) => card.toJSON())
         };
     }
 
+    /**
+     * Deserializet this hand from JSON.
+     * @param handJson
+     * @returns {Hand}
+     */
     fromJSON(handJson) {
         this.cards = handJson.cards.map((cardJson) => new Card(cardJson.suit, cardJson.number));
         return this;

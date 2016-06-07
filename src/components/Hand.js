@@ -8,11 +8,17 @@ export default class Hand extends React.Component {
 
         const playerScore = player.getScore();
 
+        let winnerBadge = null;
+
+        if (this.props.isWinner) {
+            winnerBadge = <span>Winner!</span>;
+        }
+
         return (
-            <div>
-                <h2>{title}: {playerScore}</h2>
+            <section className="hand">
+                <h2>{title}: {playerScore} {winnerBadge}</h2>
                 <CardList cards={player.cards}/>
-            </div>
+            </section>
         );
     }
 }
