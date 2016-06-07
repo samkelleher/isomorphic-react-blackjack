@@ -53,6 +53,10 @@ export default class Card {
         return `${this.getType()} of ${this.suit}`;
     }
 
+    toID() {
+        return `${this.getType()}-${this.suit}`;
+    }
+
     toJSON() {
         return {
             number: this.number,

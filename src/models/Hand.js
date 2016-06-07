@@ -19,11 +19,13 @@ export default class Hand {
     }
 
     toJSON() {
-        return this.cards.map((card) => card.toJSON());
+        return {
+            cards: this.cards.map((card) => card.toJSON())
+        };
     }
 
     fromJSON(handJson) {
-        this.cards = handJson.map((cardJson) => new Card(cardJson.suit, cardJson.number));
+        this.cards = handJson.cards.map((cardJson) => new Card(cardJson.suit, cardJson.number));
     }
 
 }
