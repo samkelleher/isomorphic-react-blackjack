@@ -6,7 +6,7 @@ export default class HitButton extends React.Component {
     static contextTypes = {
         executeAction: React.PropTypes.func.isRequired
     };
-    
+
     handleClick = (e) => {
 
         e.preventDefault();
@@ -17,7 +17,7 @@ export default class HitButton extends React.Component {
 
     render() {
         return (
-            <button onClick={this.handleClick}>Hit</button>
+            <button title="Pick a card from the deck." onClick={this.handleClick}>Hit</button>
         );
     }
 }

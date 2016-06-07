@@ -17,7 +17,7 @@ export default class StickButton extends React.Component {
     
     render() {
         return (
-            <button onClick={this.handleClick}>Stick</button>
+            <button title="The Dealer will pick a card from the deck." onClick={this.handleClick}>Stick</button>
         );
     }
 }

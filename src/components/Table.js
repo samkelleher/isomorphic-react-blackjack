@@ -18,7 +18,7 @@ export default class Table extends React.Component {
             <div>
                 <h1>Welcome to the Blackjack Game.</h1>
 
-                <HitButton /><br />
+                <HitButton />
                 <StickButton />
 
                 <Hand title="Player" player={player}/>
