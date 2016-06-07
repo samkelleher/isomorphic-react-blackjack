@@ -68,6 +68,7 @@ export default class Deck {
 
     fromJSON(deckJson) {
         this.cards = deckJson.map((cardJson) => new Card(cardJson.suit, cardJson.number));
+        return this;
     }
 
 }

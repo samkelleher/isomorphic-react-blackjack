@@ -46,6 +46,7 @@ export default class Hand {
 
     fromJSON(handJson) {
         this.cards = handJson.cards.map((cardJson) => new Card(cardJson.suit, cardJson.number));
+        return this;
     }
 
 }
