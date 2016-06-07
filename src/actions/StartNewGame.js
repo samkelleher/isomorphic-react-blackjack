@@ -18,6 +18,10 @@ export default function StartNewGame(context, {route}) {
         const player = new Hand(deck);
         const dealer = new Hand(deck);
 
+        player.takeCard().takeCard();
+
+        dealer.takeCard();
+
         context.dispatch(Actions.START_NEW_GAME, {
             deck,
             dealer,

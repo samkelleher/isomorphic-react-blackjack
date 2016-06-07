@@ -2,6 +2,7 @@
 import Fluxible from 'fluxible';
 import Application from './containers/Application';
 import RouteStore from './stores/RouteStore';
+import GameStore from './stores/GameStore';
 import fetchrPlugin from 'fluxible-plugin-fetchr';
 
 let app = new Fluxible({
@@ -22,5 +23,6 @@ app.plug(fetchrPlugin({
 }));
 
 app.registerStore(RouteStore);
+app.registerStore(GameStore);
 
 export default app;

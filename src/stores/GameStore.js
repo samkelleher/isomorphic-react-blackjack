@@ -6,7 +6,7 @@ import Actions from '../constants/Actions';
  */
 export default class extends BaseStore {
 
-    static storeName = 'PostListStore';
+    static storeName = 'GameStore';
 
     static handlers = {
         [Actions.START_NEW_GAME]: 'applyNewGame'
@@ -20,15 +20,10 @@ export default class extends BaseStore {
 
     applyNewGame(game) {
         this.state = game;
+        this.emitChange();
     }
 
     getState() {
-        if (!this.paginatedPostList) {
-            return {
-                paginatedPostList: null
-            };
-        }
-
         return this.state;
     }
 
@@ -53,6 +48,6 @@ export default class extends BaseStore {
             deck,
             player,
             dealer
-        }
+        };
     }
 }
