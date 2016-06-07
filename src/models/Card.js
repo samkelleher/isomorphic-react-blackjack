@@ -53,5 +53,12 @@ export default class Card {
         return `${this.getType()} of ${this.suit}`;
     }
 
+    toJSON() {
+        return {
+            number: this.number,
+            suit: this.suit
+        };
+    }
+
 
 }

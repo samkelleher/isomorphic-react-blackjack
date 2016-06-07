@@ -1,5 +1,7 @@
 import {BaseStore} from 'fluxible/addons';
 import Actions from '../constants/Actions';
+import Deck from '../models/Deck';
+import Hand from '../models/Hand';
 
 /**
  * A store for storing the actual game state.
@@ -28,10 +30,15 @@ export default class extends BaseStore {
     }
 
     dehydrate() {
+
+        if (!this.state) {
+            return null;
+        }
+
         return {
-            deck: null,
-            player: null,
-            dealer: null
+            deck: this.state.deck.toJSON(),
+            player: this.state.player.toJSON(),
+            dealer: this.state.dealer.toJSON()
         };
     }
 
@@ -40,9 +47,10 @@ export default class extends BaseStore {
             return;
         }
 
-        const dealer = state.dealer;
-        const player = state.player;
-        const deck = state.deck;
+        const deck = new Deck().fromJSON(state.deck);
+
+        const dealer = new Hand(deck).fromJSON(state.dealer);
+        const player = new Hand(deck).fromJSON(state.player);
 
         this.state = {
             deck,

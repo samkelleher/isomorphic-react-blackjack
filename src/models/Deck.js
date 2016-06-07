@@ -23,18 +23,18 @@ export default class Deck {
 
             let suit;
             switch (suitValue) {
-            case 1:
-                suit = Suits.Hearts;
-                break;
-            case 2:
-                suit = Suits.Clubs;
-                break;
-            case 3:
-                suit = Suits.Spades;
-                break;
-            case 4:
-                suit = Suits.Diamonds;
-                break;
+                case 1:
+                    suit = Suits.Hearts;
+                    break;
+                case 2:
+                    suit = Suits.Clubs;
+                    break;
+                case 3:
+                    suit = Suits.Spades;
+                    break;
+                case 4:
+                    suit = Suits.Diamonds;
+                    break;
             }
 
             const card = new Card(suit, number);
@@ -60,6 +60,14 @@ export default class Deck {
         }
 
         return this.cards.pop();
+    }
+
+    toJSON() {
+        return this.cards.map((card) => card.toJSON());
+    }
+
+    fromJSON(deckJson) {
+        this.cards = deckJson.map((cardJson) => new Card(cardJson.suit, cardJson.number));
     }
 
 }
