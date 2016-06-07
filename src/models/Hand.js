@@ -18,6 +18,26 @@ export default class Hand {
         return this;
     }
 
+    getScore() {
+        let numberOfAces = 0;
+        let score = 0;
+        
+        this.cards.forEach((card) => {
+            if (card.isAce()) {
+                numberOfAces += 1;
+            }
+            score += card.getValue();
+        });
+
+        // In Blackjack, Aces have two values, when the value is above 21.
+        while (score > 21 && numberOfAces > 0){
+            score -= 10;
+            numberOfAces -=1;
+        }
+
+        return score;
+    }
+    
     toJSON() {
         return {
             cards: this.cards.map((card) => card.toJSON())

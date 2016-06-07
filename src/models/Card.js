@@ -13,6 +13,10 @@ export default class Card {
         this.number = number;
     }
 
+    isAce() {
+        return this.number === 1;
+    }
+
     getType() {
         switch (this.number) {
             case 1:
@@ -31,6 +35,14 @@ export default class Card {
                 return this.number;
                 break;
         }
+    }
+
+    getNumber() {
+        return this.number;
+    }
+
+    getSuit() {
+        return this.suit;
     }
 
     getValue() {

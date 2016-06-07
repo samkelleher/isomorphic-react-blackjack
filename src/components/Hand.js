@@ -6,9 +6,11 @@ export default class Hand extends React.Component {
 
         const {title, player} = this.props;
 
+        const playerScore = player.getScore();
+
         return (
             <div>
-                <h2>{title}</h2>
+                <h2>{title}: {playerScore}</h2>
                 <CardList cards={player.cards}/>
             </div>
         );
