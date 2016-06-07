@@ -1,5 +1,8 @@
 import express from 'express';
 import config from './config';
+import Application from './Application';
+import BodyParser from 'body-parser';
+import HandleServerRendering from './server/HandleServerRendering';
 
 export default function () {
 
@@ -16,6 +19,12 @@ export default function () {
     server.disable('x-powered-by');
     server.disable('etag');
 
+    const fetchr = Application.getPlugin('FetchrPlugin');
+    server.use(fetchr.getXhrPath(), BodyParser.json(), fetchr.getMiddleware());
+
+    // Render the page server-side and send it as response.
+    server.use(HandleServerRendering);
+    
     return new Promise((resolve) => {
 
         server.listen(server.get('port'), () => {
