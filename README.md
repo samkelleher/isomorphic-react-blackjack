@@ -1,4 +1,16 @@
 # Blackjack
+> An isomporphic demo application for playing Blackjack using ReactJS, Node, and Fluxible.
+
+## Getting Started
+Running this web application assumed knowledge of NodeJS, and has only been tested in *Node v6*.
+
+After running `npm install` you can run a hot-loading dev server to test and develop the application:
+
+```
+$ npm run dev
+```
+
+## Background Story
 
 A simple HTML/JavaScript game of [Blackjack](http://en.wikipedia.org/wiki/Blackjack).
 
