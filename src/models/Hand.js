@@ -37,6 +37,17 @@ export default class Hand {
 
         return score;
     }
+
+    /**
+     * This is used by the Dealer, when the Player 'sticks'. The dealer will take cards until they're broke.
+     * @returns {Hand}
+     */
+    dealUntilHighest() {
+        while (this.getScore() < 17) {
+            this.takeCard();
+        }
+        return this;
+    }
     
     toJSON() {
         return {

@@ -13,14 +13,25 @@ export default class extends BaseStore {
     static storeName = 'GameStore';
 
     static handlers = {
-        [Actions.START_NEW_GAME]: 'applyNewGame'
+        [Actions.START_NEW_GAME]: 'applyNewGame',
+        [Actions.PLAYER_HIT]: 'playerHit',
+        [Actions.PLAYER_STICK]: 'playerStick'
     };
+
+    playerHit() {
+        this.state.player.takeCard();
+        this.emitChange();
+    }
+
+    playerStick() {
+        this.state.dealer.dealUntilHighest();
+        this.emitChange();
+    }
 
     constructor(dispatcher) {
         super(dispatcher);
         this.state = null;
     }
-
 
     applyNewGame(game) {
         this.state = game;

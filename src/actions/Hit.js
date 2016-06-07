@@ -5,6 +5,10 @@ import Hand from '../models/Hand';
 export default function Hit(context) {
     return new Promise((resolve, reject) => {
 
+        context.dispatch(Actions.PLAYER_HIT, {
+
+        });
+
         resolve();
 
     });

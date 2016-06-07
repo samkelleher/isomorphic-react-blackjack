@@ -3,6 +3,10 @@ import Stick from '../actions/Stick';
 
 export default class StickButton extends React.Component {
 
+    static contextTypes = {
+        executeAction: React.PropTypes.func.isRequired
+    };
+
     handleClick = (e) => {
 
         e.preventDefault();
