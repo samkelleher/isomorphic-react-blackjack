@@ -1,6 +1,9 @@
 import React from 'react';
 import {connectToStores} from 'fluxible-addons-react';
 import Hand from './Hand';
+import StickButton from './StickButton';
+import HitButton from './HitButton';
+
 import GameStore from '../stores/GameStore';
 
 @connectToStores([GameStore], (context) => ({
@@ -14,6 +17,9 @@ export default class Table extends React.Component {
         return (
             <div>
                 <h1>Welcome to the Blackjack Game.</h1>
+
+                <HitButton /><br />
+                <StickButton />
 
                 <Hand title="Player" player={player}/>
 
