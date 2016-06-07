@@ -19,6 +19,9 @@ export default class Html extends React.Component {
     render() {
         const {state, content} = this.props;
 
+        // TODO: Load this from a config
+        scripts.push('http://localhost:3002/js/bundle.js');
+
         const title = 'Blackjack';
 
         return (

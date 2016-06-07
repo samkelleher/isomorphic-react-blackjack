@@ -2,7 +2,9 @@ import {BaseStore} from 'fluxible/addons';
 import Actions from '../constants/Actions';
 import Deck from '../models/Deck';
 import Hand from '../models/Hand';
+import Debug from 'debug';
 
+const debug = Debug('App:GameStore');
 /**
  * A store for storing the actual game state.
  */
@@ -43,6 +45,7 @@ export default class extends BaseStore {
     }
 
     rehydrate(state) {
+        debug('Rehydrating', state);
         if (!state) {
             return;
         }
