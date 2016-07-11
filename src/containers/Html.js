@@ -1,7 +1,8 @@
 import React, {PropTypes} from 'react';
 import {provideContext} from 'fluxible-addons-react';
 
-const scripts = [];
+// TODO: Load this from a config
+const scripts = ['http://localhost:3002/js/bundle.js'];
 
 @provideContext()
 export default class Html extends React.Component {
@@ -18,9 +19,6 @@ export default class Html extends React.Component {
 
     render() {
         const {state, content} = this.props;
-
-        // TODO: Load this from a config
-        scripts.push('http://localhost:3002/js/bundle.js');
 
         const title = 'Blackjack';
 
