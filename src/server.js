@@ -3,6 +3,7 @@ import config from './config';
 import Application from './Application';
 import BodyParser from 'body-parser';
 import HandleServerRendering from './server/HandleServerRendering';
+import Favicon from './server/Favicon';
 
 export default function () {
 
@@ -22,9 +23,12 @@ export default function () {
     const fetchr = Application.getPlugin('FetchrPlugin');
     server.use(fetchr.getXhrPath(), BodyParser.json(), fetchr.getMiddleware());
 
+    // Handle favicon to stop it filling the log
+    server.use('/favicon.ico', Favicon);
+
     // Render the page server-side and send it as response.
     server.use(HandleServerRendering);
-    
+
     return new Promise((resolve) => {
 
         server.listen(server.get('port'), () => {
